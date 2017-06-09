@@ -1410,21 +1410,19 @@ extension AztecPostViewController : Aztec.FormatBarDelegate {
     func createToolbar(htmlMode: Bool) -> Aztec.FormatBar {
 
         let scrollableItems = [
-            makeToolbarButton(identifier: .media),
             makeToolbarButton(identifier: .header),
+            makeToolbarButton(identifier: .unorderedlist),
+            makeToolbarButton(identifier: .blockquote),
             makeToolbarButton(identifier: .bold),
             makeToolbarButton(identifier: .italic),
-            makeToolbarButton(identifier: .underline),
-            makeToolbarButton(identifier: .strikethrough),
-            makeToolbarButton(identifier: .blockquote),
-            makeToolbarButton(identifier: .unorderedlist),
-            makeToolbarButton(identifier: .orderedlist),
-            makeToolbarButton(identifier: .link),
-            makeToolbarButton(identifier: .horizontalruler),
-            makeToolbarButton(identifier: .more)
+            makeToolbarButton(identifier: .link)
         ]
 
         let fixedItems = [
+            makeToolbarButton(identifier: .underline),
+            makeToolbarButton(identifier: .strikethrough),
+            makeToolbarButton(identifier: .horizontalruler),
+            makeToolbarButton(identifier: .more),
             makeToolbarButton(identifier: .sourcecode)
         ]
 
@@ -1437,10 +1435,13 @@ extension AztecPostViewController : Aztec.FormatBarDelegate {
             }
         }
 
-        toolbar.scrollableItems = scrollableItems
-        toolbar.fixedItems = fixedItems
+        let mediaItem = makeToolbarButton(identifier: .media)
+
+        toolbar.defaultItems = [[mediaItem], scrollableItems]
+        toolbar.overflowItems = fixedItems
+        toolbar.overflowToggleIcon = Gridicon.iconOfType(.ellipsis)
         toolbar.tintColor = WPStyleGuide.greyLighten10()
-        toolbar.topBorderColor = WPStyleGuide.greyLighten10()
+        toolbar.dividerTintColor = WPStyleGuide.greyLighten30()
         toolbar.highlightedTintColor = .blue
         toolbar.selectedTintColor = .darkGray
         toolbar.disabledTintColor = .lightGray
@@ -2265,7 +2266,7 @@ extension FormattingIdentifier {
 
         switch(self) {
         case .media:
-            return Gridicon.iconOfType(.addImage)
+            return Gridicon.iconOfType(.addOutline)
         case .header:
             return Gridicon.iconOfType(.heading)
         case .bold:
