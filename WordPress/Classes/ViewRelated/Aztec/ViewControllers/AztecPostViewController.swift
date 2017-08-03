@@ -1721,7 +1721,6 @@ extension AztecPostViewController : Aztec.FormatBarDelegate {
         options.filter = [WPMediaType.image, WPMediaType.video]
         options.allowMultipleSelection = true
         options.allowCaptureOfMedia = false
-        options.useLongTouchForPreview = true
         let picker = WPInputMediaPickerViewController(options: options)
         mediaPickerInputViewController = picker
         richTextView.inputAccessoryView = mediaInputToolbar
