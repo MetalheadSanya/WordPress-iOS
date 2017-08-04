@@ -153,7 +153,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Automattic/WordPressComKit.git
     :tag: 0.0.6
   WPMediaPicker:
-    :commit: d432047158233c4eb76bf27a086f58767fcc9048
+    :commit: 8b043a40a373aa081e1faf63c9b43baa46e385e0
     :git: https://github.com/wordpress-mobile/MediaPicker-iOS.git
 
 SPEC CHECKSUMS:
